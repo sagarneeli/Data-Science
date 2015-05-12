@@ -16,6 +16,8 @@ cleanFICORange = cleanFICORange.map(lambda x: [int(n) for n in x])
 loansData['FICO.Range'] = cleanFICORange
 loansData['FICO.Score'] = [cleanFICORange.values[x][0] for x in range(len(cleanFICORange))]
 
+# print loansData['FICO.Score']
+
 # plt.figure()
 # p = loansData['FICO.Score'].hist()
 # a = pd.scatter_matrix(loansData, alpha=0.05, figsize=(10,10), diagonal='hist')
@@ -37,3 +39,6 @@ model = sm.OLS(y,X)
 f = model.fit()
 
 f.summary()
+
+
+loansData.to_csv('loansData_clean.csv', header=True, index=False)
